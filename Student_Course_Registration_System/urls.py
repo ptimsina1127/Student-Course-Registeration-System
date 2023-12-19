@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ('index/',views.indexpage),
     path ('students/',views.students),
-    #path ('courses/',views.courses),
-    #path ('registeration/',views.registeration),
+    path ('courses/',views.courses),
+    path ('registeration/',views.registeration),
 ]

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, th, td {
+        border: 1px solid white;
+        border-collapse: collapse;
+
+        }
+
+        th, td {
+        
+        border-collapse: collapse;
+        border-radius: 5px;
+        
+        padding: 0px 15px ;
+        }
+
+        tr:nth-child(odd){
+            background-color: aqua;
+        }
+    </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <script src = "index.js"></script>
+  
+    <div id="content">
+
+    </div>
+
+    <div>
+        <form>
+            <label>Name</label><input type="text" name="studentName" id="studentName" ><br>
+            <label>Age</label><input type="text" name="studentAge" id="studentAge"><br>
+            <label>Class</label><input type="text" name="studentClass" id="studentClass"><br>
+            <label>Address</label><input type="text" name="studentAddress" id="studentAddress"><br>
+           
+        </form>
+        <Button onclick="insertData()">Add Students</Button>
+    </div>
+</body>
+</html>
