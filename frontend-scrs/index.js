@@ -28,13 +28,15 @@ function loadTable(jsondata){
     var contentDiv = document.getElementById("content");
     var tableData = "<table> <tr><th>Name</th><th>Age</th><th>Class</th><th>Address</th></tr>";
     for (var i = 0 ; i < jsondata["length"];++i){
+        var id = jsondata[i]["id"] 
         tableData = tableData+`
         <tr>
         <td>${jsondata[i]["studentName"]}</td>
         <td>${jsondata[i]["studentAge"]}</td>
         <td>${jsondata[i]["studentClass"]}</td>
         <td>${jsondata[i]["studentAddress"]}</td>
-
+        <td><button id = "update_${id}" onclick = "updateData(this.id)">Update</button></td>
+        <td><button id = "delete_${id}" onclick = "deleteData(this.id)">Delete</button></td>
         </tr>
         `
     }
@@ -65,5 +67,27 @@ function insertData(){
 
 };
 
+function updateData(update_id){
+    console.log("Console Log Print: " + typeof(update_id));
+    var array = update_id.split("_");
+    var id = Number(array[1]);
+    console.log(id);
+
+};
+
+function deleteData(delete_id){
+    var array = delete_id.split("_");
+    var id = Number(array[1]);
+    data = {
+        "id": id
+    };
+    request.open("DELETE","http://127.0.0.1:8000/students/");
+    request.setRequestHeader("Content-Type","application/json");
+    request.send(JSON.stringify(data));
+    request.onload =() => {
+        console.log(request.response);
+     };
+
+};
 
 

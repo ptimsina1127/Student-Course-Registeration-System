@@ -7,6 +7,8 @@ class Student(models.Model):
     studentClass = models.IntegerField()
     studentAge = models.IntegerField()
     studentAddress = models.CharField(max_length = 30)
+    def __str__(self) -> str:
+        return self.studentName
 
 class Courses(models.Model):
     courseName = models.CharField(max_length = 20)

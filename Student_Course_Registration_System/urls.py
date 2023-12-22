@@ -24,4 +24,5 @@ urlpatterns = [
     path ('students/',views.students),
     path ('courses/',views.courses),
     path ('registeration/',views.registeration),
+    #path ('deletestudent/',views.deleteStudent)
 ]

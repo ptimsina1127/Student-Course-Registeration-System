@@ -27,6 +27,28 @@ def students(request):
         student = Student(studentName= sname, studentClass = sclass, studentAge = sage, studentAddress = saddress)
         student.save()
         return JsonResponse(jsonData,safe=False)
+    elif(request.method =="DELETE"):
+        jsonData = json.loads(request.body)
+        deleteid = jsonData["id"]
+        if (Student.objects.filter(id=deleteid)):
+            Student.objects.filter(id=deleteid).delete()
+            return JsonResponse("Successfully Deleted",safe=False)
+        return JsonResponse("Record Not Found",safe=False)
+    elif (request.method=="PUT"):
+        jsonData = json.loads(request.body)
+        sid = jsonData["id"]
+        sname = jsonData["studentName"]
+        sclass = jsonData["studentClass"]
+        sage = jsonData["studentAge"]
+        saddress = jsonData["studentAddress"]
+
+        studentobj= Student.objects.get(id=sid)
+        studentobj.studentName = sname
+        studentobj.studentClass = sclass
+        studentobj.studentAge = sage
+        studentobj.studentAddress = saddress
+        studentobj.save()
+        return JsonResponse(jsonData, safe=False)
     
 @csrf_exempt
 def courses(request):
